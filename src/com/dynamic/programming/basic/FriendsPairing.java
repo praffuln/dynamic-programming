@@ -67,5 +67,3 @@ class FriendsPairing {
 		System.out.println(countFriendsPairings(n));
 	}
 }
-
-// This code is contributed by vt_m

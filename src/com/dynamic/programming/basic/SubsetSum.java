@@ -1,5 +1,7 @@
 package com.dynamic.programming.basic;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class SubsetSum {
 	//function to identify good numbers
