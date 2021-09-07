@@ -110,8 +110,7 @@ public class LongestCommonSubsequence {
  // This function mainly returns LCS(str, str)
  // with a condition that same characters at
  // same index are not considered.
- static int findLongestRepeatingSubSeq(String str)
- {
+ private int findLongestRepeatingSubSeq(String str) {
      int n = str.length();
     
      // Create and initialize DP table
