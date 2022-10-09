@@ -3,3 +3,7 @@ CoinChange.java
 
 Subset Sum Problem
 Subset Sum Problem in O(sum) space.....
+Subset with sum divisible by m
+Choice of area
+Tiling with Dominoes
+Assembly line scheduling
