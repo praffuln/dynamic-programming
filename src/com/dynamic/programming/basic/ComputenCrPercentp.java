@@ -16,7 +16,7 @@ package com.dynamic.programming.basic;
  *  optimized by constructing one row at a time. See Space optimized version 
  *  in below post for details.
 
- *  Binomial Coefficient using Dynamic Programming
+ *  Binomial Coefficient using Dynamic Programming (BinomialCoefficient.java)
  *  
  *  Below is implementation based on the space optimized version discussed in above post.  
  *  

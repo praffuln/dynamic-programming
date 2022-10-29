@@ -1,6 +1,16 @@
 package com.dynamic.programming.basic;
 
 /**
+ * Observations :--- 
+ * 
+ * https://www.youtube.com/watch?v=mO8XpGoJwuo
+ * 
+ * This is KnapsackProblemZeroOne. where 
+ *    price[] = {1   5   8   9  10  17  17  20}
+ *    weight[] = {1   2   3   4   5   6   7   8}
+ *    
+ *    and W = N.
+ * 
  * Given a rod of length n inches and an array of prices that includes prices of
  * all pieces of size smaller than n. Determine the maximum value obtainable by
  * cutting up the rod and selling the pieces. For example, if the length of the
