@@ -77,7 +77,6 @@ public class GoldMineProblemTwoApproach {
         for (int row = 0; row < m; row++) {
         	   	System.out.println(gold[row][col]);
                 // the cell on the right(->)
-                //int right = (col == n - 1) ? 0 : goldTable[row][col - 1];
                 int right =  goldTable[row][col-1];
                 
 
