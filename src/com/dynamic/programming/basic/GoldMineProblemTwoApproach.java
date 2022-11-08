@@ -1,6 +1,5 @@
 package com.dynamic.programming.basic;
 
-// Java program to solve Gold Mine problem
 import java.util.Arrays;
 
 /**
@@ -49,7 +48,7 @@ import java.util.Arrays;
  * return it.
  * 
  */
-class GoldMineProblem {
+public class GoldMineProblemTwoApproach {
 
     // Returns maximum amount of gold that
     // can be collected when journey started
@@ -67,21 +66,28 @@ class GoldMineProblem {
 
         for (int[] rows : goldTable)
             Arrays.fill(rows, 0);
-
-        for (int col = n - 1; col >= 0; col--) {
-            for (int row = 0; row < m; row++) {
-
-                // Gold collected on going to
+         
+        for(int row = 0; row<m; row++) 
+        	goldTable[row][0] = gold[row][0];
+        
+        printGoldTable(goldTable);
+        
+        //fill to columns then row
+        for (int col = 1; col <  n; col++) {
+        for (int row = 0; row < m; row++) {
+        	   	System.out.println(gold[row][col]);
                 // the cell on the right(->)
-                int right = (col == n - 1) ? 0 : goldTable[row][col + 1];
+                //int right = (col == n - 1) ? 0 : goldTable[row][col - 1];
+                int right =  goldTable[row][col-1];
+                
 
                 // Gold collected on going to
                 // the cell to right up (/)
-                int right_up = (row == 0 || col == n - 1) ? 0 : goldTable[row - 1][col + 1];
+                int right_up = (row == m-1) ? 0 : goldTable[row + 1][col - 1];
 
                 // Gold collected on going to
                 // the cell to right down (\)
-                int right_down = (row == m - 1 || col == n - 1) ? 0 : goldTable[row + 1][col + 1];
+                int right_down = (row == 0) ? 0 : goldTable[row - 1][col - 1];
 
                 // Max gold collected from taking
                 // either of the above 3 paths
@@ -93,10 +99,10 @@ class GoldMineProblem {
         printGoldTable(goldTable);
         // The max amount of gold collected will be
         // the max value in first column of all rows
-        int res = goldTable[0][0];
+        int res = goldTable[0][n-1];
 
         for (int i = 1; i < m; i++)
-            res = Math.max(res, goldTable[i][0]);
+            res = Math.max(res, goldTable[i][n-1]);
 
         return res;
     }
