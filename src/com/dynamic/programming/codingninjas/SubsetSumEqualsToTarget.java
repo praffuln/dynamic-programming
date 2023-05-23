@@ -1,5 +1,14 @@
 package com.dynamic.programming.codingninjas;
 
+/**
+ * You are given an array of 'N' positive integers and an integer 'K'. Your task
+ * is to check if there exists a subset in ARR with a sum equal to 'K'. Return
+ * true if there exists a subset with sum equal to 'K'. Otherwise, return false.
+ * 
+ * {1,2,3,4} and 'K' =4, then there exists 2 subsets with sum =4. these are
+ * {1,3} and {4}. Hence return true.
+ *
+ */
 public class SubsetSumEqualsToTarget {
 
 	//Overlapping subProblem.
@@ -122,10 +131,7 @@ public class SubsetSumEqualsToTarget {
 	            cur[target]= notTaken||taken;
 	        }
 	        prev=cur;
-	      
 	    }
-	    
 	    return prev[k];
 	}
-
 }
