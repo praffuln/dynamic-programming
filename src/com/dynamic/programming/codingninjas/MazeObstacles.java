@@ -13,6 +13,8 @@ package com.dynamic.programming.codingninjas;
  * the bottom-right corner.
  *
  * Same as 63. Unique Paths II --- Leetcode
+ * 
+ * Check (UniquePaths.java)
  */
 public class MazeObstacles {
 	

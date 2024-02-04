@@ -22,9 +22,32 @@ import com.dynamic.programming.basic.GoldMineProblemTwoApproach;
  * 
  */
 public class NinjasTraining {
- 
-    static int getMaxPoints(int points[][], int m, int n) {
-
+	
+	/**
+	 * TC --> O(n*m)
+	 * SC -> O(m*n) + O(m+n)
+	 */
+	static int getMaxPointsRecursion(int points[][], int index, int last) {
+		if(index ==0) {
+			int max = Integer.MIN_VALUE;
+			for(int i=0;i<3;i++) { //3 is activity can change to variable easily. 
+				if(last != i) {
+					max = Math.max(max, points[i][last]);
+				}
+			}
+			return max;
+		}
+		int max = Integer.MIN_VALUE;
+		for(int i=0;i<3;i++) { //3 is activity can change to variable easily. 
+			if(last != i) {
+				max = Math.max(max, getMaxPointsRecursion(points, index-1, i));
+			}
+		}
+		return points[index][last] + max;
+	}
+	
+    static int getMaxPointsDP(int points[][], int m, int n) {
+    	
         int pointTable[][] = new int[m][n];
 
         for (int[] rows : pointTable)
@@ -49,7 +72,6 @@ public class NinjasTraining {
         	   			maxPointPreviousDay = Math.max(maxPointPreviousDay, previousDayPoints[i]);
         	   		}
         	   	}
-        	   	
         	   	System.out.println(points[day][point] +", max -" + maxPointPreviousDay);
         	   	
         	   	//add points for day
@@ -77,13 +99,19 @@ public class NinjasTraining {
         }
 
     }
-
+ 
     public static void main(String arg[]) {
-        int points[][] = { { 1,2,5 }, { 3,1,1 }, {3,3,3}};
-//        int points[][] = { { 10, 40, 70 }, { 20, 50, 80}, {30, 60, 90}};
+       int points[][] = { { 1,2,5 }, { 3,1,1 }, {3,3,3}};
+  //     int points[][] = { { 10, 40, 70 }, { 20, 50, 80}, {30, 60, 90}};
 
         int m = 3, n = 3;
 
-        System.out.print("Maximum point can collect : " + getMaxPoints(points, m, n));
+        System.out.println("Maximum point can collect : " + getMaxPointsDP(points, m, n));
+        
+        int max =Integer.MIN_VALUE;
+		for (int last = 0; last < n; last++) {
+			max = Math.max(max, getMaxPointsRecursion(points, m - 1, last));
+		}
+        System.out.println("\nfrom recursion " + max);
     }
 }

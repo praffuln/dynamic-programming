@@ -87,6 +87,9 @@ public class Triangle {
 	}
 	
 	public static void main(String[] args) {
+		int[][] grid0 = { {2},{3,4},{6,5,7},{4,1,8,3}};
+		System.out.println("\n minPathSumRecursion is - "+ minPathSumRecursion(grid0)); // expected 11
+		
 		int[][] grid1 = { {2},{3,4},{6,5,7},{4,1,8,3}};
 		System.out.println("\n minPathSum is - "+ minPathSum(grid1)); // expected 11
 		
@@ -101,7 +104,29 @@ public class Triangle {
 	}
 	
 	
-    private static void printTable(int[][] table) {
+    private static int minPathSumRecursion(int[][] a) {
+    	int R = a.length;
+        int C = a[R-1].length; 
+        return minPatshSumRecursionUtil(a, 0, 0, R, C);
+	}
+
+	/**
+	 * TC = 2 power (1+2+3 ..... + (n-1))
+	 * SC = O(n)
+	 * 
+	 * Memorization - 
+	 * TC = O(N* N)
+	 * SC = O(N*N) + O(N) 
+	 */
+	private static int minPatshSumRecursionUtil(int[][] a, int i, int j, int r, int c) {
+		if(i == r-1) return a[i][j]; //there is only 1 base case
+		int down = a[i][j] + minPatshSumRecursionUtil(a, i+1, j, r,c);
+		int diagonal = a[i][j] + minPatshSumRecursionUtil(a, i+1, j+1, r,c);
+		
+		return Math.min(down, diagonal);
+	}
+
+	private static void printTable(int[][] table) {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[0].length; j++) {
                 System.out.print(table[i][j] + "  ");

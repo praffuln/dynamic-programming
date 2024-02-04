@@ -33,19 +33,19 @@ public class UniquePaths {
 		 int[] previous = new int[n];
 	        
 	        for(int i=0; i<m; i++) {
-	        	int[] temp = new int[n];
+	        	int[] current = new int[n];
 	            for(int j=0; j<n; j++) {
 	                if(i == 0 || j == 0) {
-	                	temp[j] = 1;
+	                	current[j] = 1;
 	                    continue;
 	                } else {
 	                    int right = previous[j];
-	                    int down = temp[j-1];
+	                    int down = current[j-1];
 	                    
-	                    temp[j] = right + down;
+	                    current[j] = right + down;
 	                }
 	            }
-	            previous = temp;
+	            previous = current;
 	        }
 	        return previous[n-1];
 		 
@@ -76,9 +76,53 @@ public class UniquePaths {
         return dp[m-1][n-1];
     }
     
+    /**
+     * TC - o(2 pow m*n)
+     * SC -> O(m-1 + n-1)
+     */
+    public static int uniquePathsRecursion(int m, int n) {
+    	if(m==0 &&  n==0) return 1;
+    	if(m<0 || n< 0) return 0;
+    	
+    	int left = uniquePathsRecursion(m-1, n);
+    	int right = uniquePathsRecursion(m, n-1);
+    	return left + right;
+    }
+
+    /**
+      * TC - o(m*n)
+     * SC -> O((m-1) + (n-1)) +  O(m*n)
+     */
+    public static int uniquePathsRecursionDP(int m, int n, int[][] dp) {
+    	if(m==0 &&  n==0) return 1;
+    	if(m<0 || n< 0) return 0;
+    	if(dp[m][n] != -1) return dp[m][n];
+    	
+    	int left = uniquePathsRecursionDP(m-1, n, dp);
+    	int right = uniquePathsRecursionDP(m, n-1, dp);
+    	return dp[m][n] = left + right;
+    }
+    
+    
     public static void main(String[] args) {
     	System.out.println(uniquePaths(3,7)); //expected is 28.
     	System.out.println(uniquePathsSpaceOptimization(3,7)); //expected is 28.
+    	int m =3, n=3;
+    	System.out.println("uniquePathsRecursion  "+ uniquePathsRecursion(m-1,n-1)); //expected is 6.
+    	int[][] dp = new int[m][n];
+    	fillArrayWithMinusONe(m, n, dp);
+		System.out.println("uniquePathsRecursionDP  "+uniquePathsRecursionDP(m-1,n-1, dp)); //expected is 6.
+    	
+		System.out.println("uniquePaths  "+uniquePaths(3,3)); //expected is 6.
+    	System.out.println("uniquePathsSpaceOptimization  "+ uniquePathsSpaceOptimization(3,3)); //expected is 6.
     }
+    
+	private static void fillArrayWithMinusONe(int m, int n, int[][] dp) {
+		for(int i=0; i<m;i++) {
+    		for(int j=0; j<n; j++) {
+    			dp[i][j] = -1;
+    		}
+    	}
+	}
 	
 }
