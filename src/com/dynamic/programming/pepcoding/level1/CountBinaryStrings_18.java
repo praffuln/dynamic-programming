@@ -1,4 +1,4 @@
-package com.dynamic.programming.pepcoding;
+package com.dynamic.programming.pepcoding.level1;
 
 /**
  * no of binary strings of length n which has o consecutive zeros.

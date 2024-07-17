@@ -1,7 +1,7 @@
 package com.dynamic.programming.basic;
 
 // Java Code for A Space Optimized
-// Solution of LCS
+// ConvertSortedArrayToBinarySearchTree of LCS
 
 /**
  * How to find the length of LCS is O(n) auxiliary space?

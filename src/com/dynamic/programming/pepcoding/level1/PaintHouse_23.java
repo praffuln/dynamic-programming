@@ -1,4 +1,4 @@
-package com.dynamic.programming.pepcoding;
+package com.dynamic.programming.pepcoding.level1;
 
 import java.util.Arrays;
 

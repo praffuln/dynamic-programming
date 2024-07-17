@@ -1,4 +1,4 @@
-package com.dynamic.programming.pepcoding;
+package com.dynamic.programming.pepcoding.level1;
 
 /**
  * 1. You are given a number n and a number k in separate lines, representing
